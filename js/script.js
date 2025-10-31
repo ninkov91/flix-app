@@ -42,7 +42,7 @@ async function displayPopularShows() {
   results.forEach((show) => {
     const div = document.createElement('div');
     div.classList.add('card');
-    div.innerHTML = `<a href="tv-details?id=${show.id}">
+    div.innerHTML = `<a href="tv-details.html?id=${show.id}">
           ${show.poster_path
         ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" class="card-img-top" alt="${show.name}" />`
         : `<img src="images/no-image.jpg" class="card-img-top" alt="${show.name}" />`
