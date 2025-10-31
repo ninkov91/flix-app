@@ -19,7 +19,7 @@ async function displayPopularMovies() {
   results.forEach((movie) => {
     const div = document.createElement('div');
     div.classList.add('card');
-    div.innerHTML = `<a href="movie-details?id=${movie.id}">
+    div.innerHTML = `<a href="movie-details.html?id=${movie.id}">
           ${movie.poster_path
         ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}" />`
         : `<img src="images/no-image.jpg" class="card-img-top" alt="${movie.title}" />`
@@ -42,7 +42,7 @@ async function displayPopularShows() {
   results.forEach((show) => {
     const div = document.createElement('div');
     div.classList.add('card');
-    div.innerHTML = `<a href="tv-details?id=${show.id}">
+    div.innerHTML = `<a href="tv-details.html?id=${show.id}">
           ${show.poster_path
         ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" class="card-img-top" alt="${show.name}" />`
         : `<img src="images/no-image.jpg" class="card-img-top" alt="${show.name}" />`
@@ -207,7 +207,7 @@ function displaySearchResults(results) {
   results.forEach((result) => {
     const div = document.createElement('div');
     div.classList.add('card');
-    div.innerHTML = `<a href="${global.search.type}-details?id=${result.id}">
+    div.innerHTML = `<a href="${global.search.type}-details.html?id=${result.id}">
           ${result.poster_path
         ? `<img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" class="card-img-top" alt="${global.search.type === 'movie' ? result.title : result.name}" />`
         : `<img src="images/no-image.jpg" class="card-img-top" alt="${global.search.type === 'movie' ? result.title : result.name}" />`
@@ -270,7 +270,7 @@ async function displaySlider() {
     div.classList.add('swiper-slide');
 
     div.innerHTML = `
-          <a href="movie-details?id=${movie.id}">
+          <a href="movie-details.html?id=${movie.id}">
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
           </a>
           <h4 class="swiper-rating">
@@ -329,7 +329,7 @@ async function searchAPIData() {
 
   showSpinner();
 
-  const response = await fetch(`${API_URL}search/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}&page=${global.search.page}`);
+  const response = await fetch(`${API_URL}search.html/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}&page=${global.search.page}`);
 
   const data = await response.json();
 
@@ -371,20 +371,20 @@ function addCommasToNumber(number) {
 function init() {
   switch (global.currentPage) {
     case '/':
-    case '/index':
+    case '/index.html':
       displaySlider();
       displayPopularMovies();
       break;
-    case '/shows':
+    case '/shows.html':
       displayPopularShows();
       break;
-    case '/movie-details':
+    case '/movie-details.html':
       displayMovieDetails();
       break;
-    case '/tv-details':
+    case '/tv-details.html':
       displayShowDetails();
       break;
-    case '/search':
+    case '/search.html':
       search();
       break;
   }
