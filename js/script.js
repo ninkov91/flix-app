@@ -329,7 +329,7 @@ async function searchAPIData() {
 
   showSpinner();
 
-  const response = await fetch(`${API_URL}search.html/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}&page=${global.search.page}`);
+  const response = await fetch(`${API_URL}search/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}&page=${global.search.page}`);
 
   const data = await response.json();
 
